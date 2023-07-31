@@ -1,0 +1,99 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PV and UV Display</title>
+</head>
+<body>
+<span>Item 1</span><span>Item 2</span><span>Item 3</span>
+  <h3>Page Engagement Metrics</h3>
+  <h4>impressions: <span id="id_1">Loading...</span> engaged_accounts: <span id="id_2">Loading...</span></h4>
+  <h4>engaged_accounts: <span id="id_2">Loading...</span></h4>
+  <h4>profile_views: <span id="id_3">Loading...</span></h4>
+  <h3>POST Engagement Metrics</h3>
+  <h4>comments: <span id="id_4">Loading...</span></h4>
+  <h4>likes: <span id="id_5">Loading...</span></h4>
+  <h4>shares: <span id="id_6">Loading...</span></h4>
+  <h4>replies: <span id="id_7">Loading...</span></h4>
+  <h4>post_impressions: <span id="id_8">Loading...</span></h4>
+  <h4>post_reach: <span id="id_9">Loading...</span></h4>
+  <h4>post_clicks: <span id="id_10">Loading...</span></h4>
+  <h4>post_engagements: <span id="id_11">Loading...</span></h4>
+  <h3>Video Metrics</h3>
+  <h4>video_views: <span id="id_12">Loading...</span></h4>
+  <h4>average_watch_time: <span id="id_13">Loading...</span></h4>
+  <h4>video_shares: <span id="id_14">Loading...</span></h4>
+  <h4>comments: <span id="id_15">Loading...</span></h4>
+  <h3>Ad Performance Metrics</h3>
+  <h4>ad_impressions: <span id="id_16">Loading...</span></h4>
+  <h4>ad_clicks: <span id="id_17">Loading...</span></h4>
+  <h4>ad_conversions: <span id="id_18">Loading...</span></h4>
+  <h4>ad_spend: <span id="id_19">Loading...</span></h4>
+
+
+  <script>
+    // Function to make the GET request to the backend API
+    function fetchData1() {
+      fetch('http://localhost:5000/page/metrics')
+        .then(response => response.json())
+        .then(data => {
+          // Update the HTML with the received data
+          document.getElementById('id_1').textContent = data.impressions;
+          document.getElementById('id_2').textContent = data.engaged_accounts;
+		  document.getElementById('id_3').textContent = data.profile_views;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+	
+	   function fetchData2() {
+      fetch('http://localhost:5000/post/metrics')
+        .then(response => response.json())
+        .then(data => {
+          // Update the HTML with the received data
+          document.getElementById('id_4').textContent = data.comments;
+          document.getElementById('id_5').textContent = data.likes;
+		  document.getElementById('id_6').textContent = data.shares;
+		  document.getElementById('id_7').textContent = data.replies;
+		  document.getElementById('id_8').textContent = data.post_impressions;
+		  document.getElementById('id_9').textContent = data.post_reach;
+		  document.getElementById('id_10').textContent = data.post_clicks;
+		  document.getElementById('id_11').textContent = data.post_engagements;
+	
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+	
+	   function fetchData3() {
+      fetch('http://localhost:5000/video/metrics')
+        .then(response => response.json())
+        .then(data => {
+          // Update the HTML with the received data
+          document.getElementById('id_12').textContent = data.video_views;
+          document.getElementById('id_13').textContent = data.average_watch_time;
+		  document.getElementById('id_14').textContent = data.video_shares;
+		  document.getElementById('id_15').textContent = data.comments
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+	
+	   function fetchData4() {
+      fetch('http://localhost:5000/ad/metrics')
+        .then(response => response.json())
+        .then(data => {
+          // Update the HTML with the received data
+          document.getElementById('id_16').textContent = data.ad_impressions;
+          document.getElementById('id_17').textContent = data.ad_clicks;
+		  document.getElementById('id_18').textContent = data.ad_conversions;
+		  document.getElementById('id_19').textContent = data.ad_spend
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    // Fetch data when the page loads
+    fetchData1();
+	fetchData2();
+	fetchData3();
+	fetchData4();
+  </script>
+</body>
+</html>
